@@ -12,7 +12,24 @@ pip install apache-airflow
 pip install rdflib
 ```
 # Folder description # 
-* Folder dags contains all dags 
+## dags ##
+Contents python scripts:
+- data-cubes.py for creating DAG in Apach AirFlow
+- care_providers.py and population.py from previous HW (script description you can find in folder hw1)
+## input ##
+Folder is generated automatically by Python when you run a script if the folder has not already been created. 
+
+Contents csv files:
+- care_providers.csv
+- country_codelist.csv
+- population.csv
+
+## output ##
+Folder is generated automatically by Python when you run a script if the folder has not already been created. 
+
+Contents ttl files:
+- health_care.ttl
+- population.ttl
 
 # File Description #
 
@@ -22,7 +39,8 @@ pip install rdflib
 ```
 python data-cubes.py
 ```
-
+### Input ### 
+- have files named population.py and care_providers.py located in the same folder as the script data-cubes.py
 
 ### Output ###
 - health_care.ttl
