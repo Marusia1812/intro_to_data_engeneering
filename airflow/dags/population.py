@@ -1,5 +1,5 @@
 import csv
-import os
+import wget
 
 from rdflib import Graph, BNode, Literal, Namespace
 from rdflib.namespace import QB, RDF, XSD
@@ -14,11 +14,13 @@ SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 def county_codelist_create(path):
     result = {}
-    with open(path + "/county_codelist.csv", "r") as stream:
+    with open(path, "r") as stream:
         reader = csv.reader(stream)
         next(reader)
         for line in reader:
-            result[line[8]] = line[4]
+            if len(line) > 0:
+                print(line)
+                result[line[8]] = line[4]
     return result
 
 
