@@ -30,7 +30,7 @@ mar:me a ns5:Organization ;
     ns5:name "Mariia Chinkova" .
 
 mar:distribution a dcat:distribution ;
-    dcat:accessURL <https://sawa.github.io/datasets/careproviders>
+    dcat:accessURL <https://sawa.github.io/datasets/careproviders> ;
     dcat:mediaType <https://www.iana.org/assignments/media-types/application/zip> .
 
 mar:GeographicalAreas a ns3:ConceptScheme ;
