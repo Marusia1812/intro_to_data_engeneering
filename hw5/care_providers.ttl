@@ -36,7 +36,7 @@ mar:distribution a dcat:distribution ;
     spdx:checksum [
     a spdx:Checksum ;
       spdx:algorithm spdx:checksumAlgorithm_sha256 ;
-      spdx:checksumValue "9ca25fa33c3925c5fbf6c31914136dc59271e5b2b917857e882c9e92a8c2a9e7"^^xsd:hexBinar 
+      spdx:checksumValue "9ca25fa33c3925c5fbf6c31914136dc59271e5b2b917857e882c9e92a8c2a9e7"^^xsd:hexBinary
     ] .
 
 mar:GeographicalAreas a ns3:ConceptScheme ;
