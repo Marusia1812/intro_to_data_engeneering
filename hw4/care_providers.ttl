@@ -1,4 +1,4 @@
-@prefix ns1: <https://mar.github.io/ontology#> .
+@prefix ns1: <https://mariiachinkova.github.io/ontology#> .
 @prefix ns2: <http://purl.org/linked-data/cube#> .
 @prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
 @prefix ns4: <http://purl.org/dc/terms/> .
@@ -9,13 +9,14 @@
 @prefix freq: <http://purl.org/cld/freq/> .
 @prefix eurovoc: <http://eurovoc.europa.eu/> .
 @prefix mar: <https://mariiachinkova.github.io> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
 
-<https://sawa.github.io/resources/dataCubeInstance> a ns2:DataSet ;
+<https://mariiachinkova.github.io/resources/dataCubeInstance> a ns2:DataSet ;
     rdfs:label "Care Providers"@en ;
     ns4:issued "2023-04-09"^^xsd:date ;
     ns4:license <https://example.com/license> ;
     ns4:modified "2023-04-09"^^xsd:date ;
-    ns4:publisher <https://mar.github.io/resources/publisher> ;
+    ns4:publisher <https://mariiachinkova.github.io/resources/publisher> ;
     ns2:structure ns1:structure ;
     ns4:title "Care providers"@en ;
     ns4:description "Care providers"@en ;
@@ -30,7 +31,7 @@ mar:me a ns5:Organization ;
     ns5:name "Mariia Chinkova" .
 
 mar:distribution a dcat:distribution ;
-    dcat:accessURL <https://sawa.github.io/datasets/careproviders> ;
+    dcat:accessURL <https://mariiachinkova.github.io/datasets/careproviders> ;
     dcat:mediaType <https://www.iana.org/assignments/media-types/application/zip> .
 
 mar:GeographicalAreas a ns3:ConceptScheme ;
