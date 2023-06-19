@@ -1,0 +1,54 @@
+@prefix ns1: <https://mariiachinkova.github.io/ontology#> .
+@prefix ns2: <http://purl.org/linked-data/cube#> .
+@prefix ns3: <http://www.w3.org/2004/02/skos/core#> .
+@prefix ns4: <http://purl.org/dc/terms/> .
+@prefix ns5: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix freq: <http://purl.org/cld/freq/> .
+@prefix eurovoc: <http://eurovoc.europa.eu/> .
+@prefix mar: <https://mariiachinkova.github.io> .
+@prefix spdx: <http://spdx.org/rdf/terms#> .
+
+<https://mariiachinkova.github.io/resources/dataCubeInstance> a ns2:DataSet ;
+    rdfs:label "Care Providers"@en ;
+    ns4:issued "2023-04-09"^^xsd:date ;
+    ns4:license <https://example.com/license> ;
+    ns4:modified "2023-04-09"^^xsd:date ;
+    ns4:publisher <https://mariiachinkova.github.io/resources/publisher> ;
+    ns2:structure ns1:structure ;
+    ns4:title "Care providers"@en ;
+    ns4:description "Care providers"@en ;
+    ns4:publisher mar:mariia ;
+    ns4:accrualPeriodicity freq:annual ;
+    ns4:spatial <https://www.wikidata.org/wiki/Q213>, mar:Region ;
+    ns4:theme eurovoc:5899, eurovoc:5900 ;
+    dcat:keyword "CZE"@en , "care providers"@en ;
+    dcat:distribution mar:distribution ;
+
+mar:me a ns5:Organization ;
+    ns5:name "Mariia Chinkova" .
+
+mar:distribution a dcat:distribution ;
+    dcat:accessURL <https://mariiachinkova.github.io/datasets/careproviders> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/zip> ;
+    spdx:checksum [
+    a spdx:Checksum ;
+      spdx:algorithm spdx:checksumAlgorithm_sha256 ;
+      spdx:checksumValue "5ce478aa4f8f450c0b3a50f501b6dfbd76fa342b9254981ca8afb89624d3dc50"^^xsd:hexBinary
+    ] .
+
+mar:GeographicalAreas a ns3:ConceptScheme ;
+  ns3:prefLabel "Geographical areas"@en ;
+  ns3:hasTopConcept mar:Region .
+
+mar:Region a ns3:Concept ;
+  ns3:inScheme mar:GeographicalAreas ;
+  ns3:prefLabel "Region"@en ;
+  ns3:narrower mar:District1 .
+
+mar:District a ns3:Concept ;
+  ns3:inScheme mar:GeographicalAreas ;
+  ns3:prefLabel "District"@en ;
+  ns3:broader mar:Region .
