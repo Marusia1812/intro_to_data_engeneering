@@ -31,24 +31,10 @@ mar:me a ns5:Organization ;
     ns5:name "Mariia Chinkova" .
 
 mar:distribution a dcat:distribution ;
-    dcat:accessURL <https://mariiachinkova.github.io/datasets/careproviders> ;
-    dcat:mediaType <https://www.iana.org/assignments/media-types/application/zip> ;
+    dcat:accessURL <https://marusia1812.github.io/NDBI046/hw1/care_providers.ttl> ;
+    dcat:mediaType <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
     spdx:checksum [
     a spdx:Checksum ;
       spdx:algorithm spdx:checksumAlgorithm_sha256 ;
-      spdx:checksumValue "5ce478aa4f8f450c0b3a50f501b6dfbd76fa342b9254981ca8afb89624d3dc50"^^xsd:hexBinary
+      spdx:checksumValue "299801b8b2d247580c9bf6872401a88bde42656be1fc21e401b2a76dae9f8e6c"^^xsd:hexBinary
     ] .
-
-mar:GeographicalAreas a ns3:ConceptScheme ;
-  ns3:prefLabel "Geographical areas"@en ;
-  ns3:hasTopConcept mar:Region .
-
-mar:Region a ns3:Concept ;
-  ns3:inScheme mar:GeographicalAreas ;
-  ns3:prefLabel "Region"@en ;
-  ns3:narrower mar:District1 .
-
-mar:District a ns3:Concept ;
-  ns3:inScheme mar:GeographicalAreas ;
-  ns3:prefLabel "District"@en ;
-  ns3:broader mar:Region .

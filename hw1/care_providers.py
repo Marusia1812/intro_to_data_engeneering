@@ -12,12 +12,25 @@ SDMX_DIMENSION = Namespace("http://purl.org/linked-data/sdmx/2009/dimension#")
 SDMX_MEASURE = Namespace("http://purl.org/linked-data/sdmx/2009/measure#")
 
 hashmap = {}
+codes = {}
+names = {}
 absolute_path = os.path.dirname(__file__)
 
 def main():
     data_as_csv = load_csv_file_as_object(absolute_path + "/care_providers.csv")
     for data in data_as_csv:
         data['measure'] = hashmap[(data['Obec'], data['DruhPece'])]
+        if data['KrajCode'] != '':
+            names[data['KrajCode']] = data['Kraj']
+            if data['KrajCode'] in codes:
+                if data['OkresCode'] != '':
+                    codes[data['KrajCode']].add(data['OkresCode'])
+                    names[data['OkresCode']] = data['Okres']
+            else:
+                if data['OkresCode'] != '':
+                    codes[data['KrajCode']] = {data['OkresCode']}
+                    names[data['OkresCode']] = data['Okres']
+
     data_cube = as_data_cube(data_as_csv)
     f = open(absolute_path + "/care_providers.ttl", "w")
     f.write(data_cube.serialize(format="ttl"))
@@ -157,8 +170,8 @@ def create_observations(collector: Graph, dataset, data):
 
 
 def create_observation(collector: Graph, dataset, resource, data):
-    county_uri = NSR[data["Okres"].replace(" ", "_").replace("\"", "")]
-    region_uri = NSR[data["Kraj"].replace(" ", "_").replace("\"", "")]
+    county_uri = NSR[data["OkresCode"]]
+    region_uri = NSR[data["KrajCode"]]
     field_of_care_uri = NSR[data["NazevZarizeni"].replace(" ", "_").replace("\"", "")]
 
     if (county_uri, RDF.type, SKOS.Concept) not in collector:
@@ -167,6 +180,7 @@ def create_observation(collector: Graph, dataset, resource, data):
             data["Okres"], lang="cs")))
         collector.add((county_uri, SKOS.prefLabel, Literal(
             data["Okres"], lang="en")))
+        collector.add((county_uri, SKOS.broader, region_uri))
     
     if (region_uri, RDF.type, SKOS.Concept) not in collector:
         collector.add((region_uri, RDF.type, SKOS.Concept))
@@ -174,6 +188,8 @@ def create_observation(collector: Graph, dataset, resource, data):
             data["Kraj"], lang="cs")))
         collector.add((region_uri, SKOS.prefLabel, Literal(
             data["Kraj"], lang="en")))
+        for code in codes[data["KrajCode"]]:
+            collector.add((region_uri, SKOS.narrower, NSR[code]))
         
     if (field_of_care_uri, RDF.type, SKOS.Concept) not in collector:
         collector.add((field_of_care_uri, RDF.type, SKOS.Concept))
